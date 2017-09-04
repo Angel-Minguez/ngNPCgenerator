@@ -1,0 +1,65 @@
+/* Common styles for form elements */
+label{
+	margin-bottom:.25em;
+}
+.alert{
+	margin-left:15px;
+	margin-right:15px;
+}
+#pwdForgotLink{
+	float:left;
+}
+.form-control{
+	font-size:0.9em;
+}
+.text-muted{
+	font-size:0.75em;
+}
+.input-group-addon{
+	background-color:#bbb;
+	border:none;
+	color:white;
+}
+.validity-addon{
+	width:7px;
+	padding:0;
+}
+input::-webkit-input-placeholder { color: #bbb !important; } /* Chrome */
+input:-moz-placeholder { color: #bbb !important; } /* Firefox 18- */
+input::-moz-placeholder { color: #bbb !important; } /* Firefox 19+ */
+input:-ms-input-placeholder { color: #bbb !important; } /* Explorer */
+.loader {
+  margin-top:7px;
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
+}
+.inactiveLoader{
+ margin-top:7px;
+height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
+}
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #2980b9;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}

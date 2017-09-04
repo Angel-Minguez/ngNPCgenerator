@@ -1,0 +1,51 @@
+<!-- Login modal template -->
+<form #loginForm="ngForm" (ngSubmit)="accept()">
+	<section class="gridLoginModalContainer modal-body">
+		<div class="itemLoginModal-a" id="title">
+			<h4 class="title" *ngIf="showActivationMessage">Account successfully activated</h4>
+			<h4 class="title">Please enter your user name and password</h4>
+		</div>
+		<div class="itemLoginModal-b" id="userInput">
+			<div class="form-group">
+				<label for="userNameInput">User name</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-trophy fa-fw"></i>
+					</span>
+					<input type="text" class="form-control" id="userNameInput" placeholder="Enter your user name" required="true"
+					[(ngModel)]="model.userName" name="userName" #userNameInput (focus)="hideAlert()" autofocus>
+				</div>
+				<small id="userNameHelp" class="form-text text-muted">If you don't remember your user name you can use your registered e-mail.</small>
+			</div>
+		</div>
+		<div class="itemLoginModal-c" id="pwdInput">
+			<div class="form-group">
+				<label for="userPwdInput">Password</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-unlock-alt fa-fw"></i>
+					</span>
+					<input type="password" class="form-control" id="userPwdInput" placeholder="Enter your password" required="true"
+					[(ngModel)]="model.userPwd" name="userPwd" (focus)="hideAlert()">
+				</div>
+				<small id="userPwdHelp" class="form-text text-muted">
+					<a id="pwdForgotLink" (click)="recoveryModal()">Forgot four password? Click here.</a>
+					<label class="fancy-checkbox">
+						<input type="checkbox"  [(ngModel)]="model.rememberFlag" name="rememberFlag">
+						<span>Remember me</span>
+					</label>	
+				</small>	
+			</div>
+		</div>
+		<div class="itemLoginModal-d" id="closeButton">
+			<button type="button" class="btn btn-secondary btn-block" (click)="close()">Close</button>
+		</div>
+		<div class="itemLoginModal-e" id="acceptButton">
+			<button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.form.valid">Accept</button>
+		</div>
+		<div class="itemLoginModal-f" [ngClass]="{'loader':loading, 'inactiveLoader':!loading}"></div>
+	</section>
+	<ngb-alert [type]="alertOptions.type" [dismissible]="alertOptions.dismiss" *ngIf="showLoginResult" (close)="hideAlert()" >
+		<strong>Error!</strong>{{alertOptions.message}}
+	</ngb-alert>
+</form>

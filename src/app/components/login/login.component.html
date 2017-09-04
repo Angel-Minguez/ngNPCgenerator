@@ -1,0 +1,11 @@
+<!-- Login component template -->
+<section class="gridContainer">
+	<div class="item-a" id="login-userCombo">		
+		<button *ngIf="userService.getUser().userName == 'guest'" class="btn btn-primary btn-block btn-wide" (click)="openLoginModal()">Login</button>
+		<button *ngIf="userService.getUser().userName != 'guest'" class="btn btn-primary btn-block btn-wide">{{userService.getUser().userName}}</button>
+	</div>
+	<div class="item-b" id="register-logout">
+		<button *ngIf="userService.getUser().userName == 'guest'" class="btn btn-primary btn-block btn-wide" (click)="openRegisterModal()">Register</button>
+		<button *ngIf="userService.getUser().userName != 'guest'" class="btn btn-primary btn-block btn-wide" (click)="logOut()">Logout</button>
+	</div>
+</section>

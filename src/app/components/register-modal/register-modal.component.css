@@ -1,0 +1,71 @@
+/* Modal register styles */
+/* Container styles */ 
+.app-modal{
+	top: 10vw;
+}
+.modal-open{
+	overflow: initial !important;
+}
+/* CSS grid layout */
+.gridRegisterModalContainer{ 
+	/* Modal body has a padding of 15px, so real height is (Height-30px) */
+	display:grid;
+	grid-template-rows: [row1-start] 50px [row1-end row2-start] minmax(85px,auto)
+						[row2-end row3-start] minmax(80px,auto) [row3-end row4-start] minmax(85px,auto) 
+						[row4-end row5-start] 80px [row5-end row6-start] 50px [row6-end row7-start] auto [row7-end] ;
+	grid-template-columns: [col1-start] calc(50% - 5px) [col1-end col2-start] calc(50% - 5px) [col2end];
+	grid-template-areas:
+		"title			title"
+		"userInput		userInput"
+		"userMail		userMail"
+		"userPwd		userPwd"
+		"userRepeatPwd	userRepeatPwd"
+		"acceptButton	cancelButton"
+		"loader			loader";
+	height:auto;
+	width:500px;
+	grid-column-gap:10px;
+	align-items: center;
+}
+.itemRegisterModal-a{
+	grid-area: title;
+}
+.itemRegisterModal-b{
+	grid-area: userInput;
+}
+.itemRegisterModal-c{
+	grid-area: userMail;
+}
+.itemRegisterModal-d{
+	grid-area: userPwd;
+}
+.itemRegisterModal-e{
+	grid-area: userRepeatPwd;
+}
+.itemRegisterModal-f{
+	grid-area: acceptButton;
+	align-self:center;
+}
+.itemRegisterModal-g{
+	grid-area: cancelButton;
+	align-self:center;
+}
+.itemRegisterModal-h{
+	grid-area: loader;
+}
+/* Other styles */
+.valid{
+	background-color:green !important;
+}
+.invalid{
+	background-color:red !important;
+}
+.inputAlert .alert{
+	margin-top:10px;
+	margin-bottom:0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+.title {
+	text-align:center;
+}

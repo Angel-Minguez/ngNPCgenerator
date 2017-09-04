@@ -1,0 +1,10 @@
+<!-- Landing Component template -->
+<section class="gridLandingContainer">
+	<ngb-alert *ngIf="activationService.activationStatus=='ACTIVATION_ERROR'" (close)="hideAlert()" dismissible="true" type="info">
+		Account activation failed, please send a ticked about the incidence or try to register again.
+	</ngb-alert>
+	<ngb-alert *ngIf="activationService.activationStatus=='ACTIVATION_TIMEOUT'" (close)="hideAlert()" dismissible="true" type="info">
+		The link used to activate the account is too old, please repeat the registration process.
+	</ngb-alert>
+	<p>hola</p>
+</section>

@@ -1,0 +1,82 @@
+<!-- Register modal template -->
+<form #registerForm="ngForm" (ngSubmit)="accept()">
+	<section class="gridRegisterModalContainer modal-body">
+		<div class="itemRegisterModal-a" id="title">
+			<h4 class="title">Register as a new user</h4>
+		</div>
+		<div class="itemRegisterModal-b" id="userInput">
+			<div class="form-group">
+				<label for="userNameInput">User name</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-trophy fa-fw"></i>
+					</span>
+					<input type="text" class="form-control" id="userNameInput" placeholder="Enter your user name" required="true"
+					[(ngModel)]="model.userName" name="userName" pattern=".{4,}" #userNameInput="ngModel" autofocus (keyup)="hideAlert('user')">
+					<span class="input-group-addon validity-addon" [ngClass]="{'valid':userNameInput.valid, 
+					'invalid':!userNameInput.valid && userNameInput.value!='' || showAlertUser}"></span>
+				</div>
+				<small id="userNameHelp" class="form-text text-muted">
+					Valid user names must be at least four characters long
+				</small>
+				<ngb-alert *ngIf="showAlertUser " class="inputAlert">{{alertOptions.message}}</ngb-alert>
+			</div>
+		</div>
+		<div class="itemRegisterModal-c" id="mailInput">
+			<div class="form-group">
+				<label for="userMailInput">E-mail</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-envelope fa-fw"></i>
+					</span>
+					<input type="text" class="form-control" id="userMailInput" placeholder="Enter your e-mail" required="true"
+					[(ngModel)]="model.userMail" name="userMail" pattern="^.+[@]{1}.+[.]{1}.{2,4}$" #userMailInput="ngModel" (keyup)="hideAlert('mail')">
+					<span class="input-group-addon validity-addon" [ngClass]="{'valid':userMailInput.valid, 
+					'invalid':(!userMailInput.valid && userMailInput.value!='') || showAlertMail}"></span>
+				</div>
+				<ngb-alert *ngIf="showAlertMail" class="inputAlert">{{alertOptions.message}}</ngb-alert>
+			</div>		
+		</div>
+		<div class="itemRegisterModal-d" id="pwdInput">
+			<div class="form-group">
+				<label for="userPwdInput">Password</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-unlock-alt fa-fw"></i>
+					</span>
+					<input type="password" class="form-control" id="userPwdInput" placeholder="Enter your password" required="true"
+					[(ngModel)]="model.userPwd" name="userPwd" pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}" #userPwdInput="ngModel">
+					<span class="input-group-addon validity-addon" [ngClass]="{'valid':userPwdInput.valid, 'invalid':!userPwdInput.valid && userPwdInput.value!=''}"></span>
+				</div>
+				<small id="userPwdHelp" class="form-text text-muted">
+					Valid passwords must be at least eight characters long and include letters and numbers
+				</small>
+			</div>
+		</div>
+		<div class="itemRegisterModal-e" id="pwdRepeatInput">
+			<div class="form-group">
+				<label for="userRepeatPwdInput">Reenter your password</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-unlock-alt fa-fw"></i>
+					</span>
+					<input type="password" class="form-control" id="userRepeatPwdInput" placeholder="Confirm your password" required="true"
+					[(ngModel)]="model.userRepeatPwd" name="userRepeatPwd" #userRepeatPwd>
+					<span class="input-group-addon validity-addon" 
+					[ngClass]="{'valid':userPwdInput.valid && userPwdInput.value==userRepeatPwd.value, 
+								'invalid':(!userPwdInput.valid || userPwdInput.value!=userRepeatPwd.value)&& userRepeatPwd.value!=''}"></span>
+				</div>
+			</div>
+		</div>
+		<div class="itemRegisterModal-f" id="closeButton">
+			<button type="button" class="btn btn-secondary btn-block" (click)="close()">Close</button>
+		</div>
+		<div class="itemRegisterModal-g" id="acceptButton">
+			<button type="submit" class="btn btn-primary btn-block" [disabled]="!registerForm.form.valid || showAlertMail || showAlertUser">Accept</button>
+		</div>
+		<div class="itemRegisterModal-h" [ngClass]="{'loader':loading, 'inactiveLoader':!loading}"></div>
+	</section>
+	<ngb-alert *ngIf="showRegisterResult" (close)="hideAlert('register')" >
+		{{alertOptions.message}}
+	</ngb-alert>
+</form>

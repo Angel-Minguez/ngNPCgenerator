@@ -1,0 +1,50 @@
+/* Modal login styles */ 
+/* Container styles */
+.app-modal{
+	top: 10vw;
+}
+.modal-open{
+	overflow: initial !important;
+}
+/* CSS grid layout */
+.gridLoginModalContainer{
+	/* Modal body has a padding of 15px, so real height is (Height-30px) */
+	display:grid;
+	grid-template-rows: [row1-start] minmax(50px,auto) [row1-end row2-start] minmax(85px,auto) 
+						[row2-end row3-start] 85px [row3-end row4-start] 50px [row4-end row5-start] auto [row5-end];
+	grid-template-columns: [col1-start] 1fr [col1-end col2-start] 1fr [col2end];
+	grid-template-areas:
+		"title			title"
+		"userInput		userInput"
+		"userPwd		userPwd"
+		"acceptButton	cancelButton"
+		"loader			loader";
+	height:auto;
+	width:500px;
+	grid-column-gap:10px;
+	align-items: center;
+}
+.itemLoginModal-a{
+	grid-area: title;
+}
+.itemLoginModal-b{
+	grid-area: userInput;
+}
+.itemLoginModal-c{
+	grid-area: userPwd;
+}
+.itemLoginModal-d{
+	grid-area: acceptButton;
+	align-self:center;
+}
+.itemLoginModal-e{
+	grid-area: cancelButton;
+	align-self:center;
+}
+.itemLoginModal-f{
+	grid-area: loader;
+}
+/* Other styles */
+.title {
+	text-align:center;
+}

@@ -1,0 +1,25 @@
+/* Login component styles */
+.gridContainer {
+	display:grid;
+	grid-template-rows: [row1-start] 100% [row1-end];
+	grid-template-columns: [col1-start] 1fr [col1-end col2-start] 1fr [col2end];
+	grid-template-areas:
+		"login-userCombo 	register-logout";
+	align-items: center;
+	grid-column-gap:5px;
+	height:100%;
+	width:100%;
+}
+.item-a{
+	grid-area: login-userCombo;
+	/*margin-right:5px;*/
+	background-color:yellow;
+}
+.item-b{
+	grid-area: register-logout;
+	/*margin-right:5px;*/
+	background-color:silver;
+}
+.btn-wide {
+	padding: 20% 0;
+}
